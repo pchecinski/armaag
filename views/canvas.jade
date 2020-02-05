@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 Mapa dla lokalizacji #{latitude}, #{longitude} dla godziny #{date}.
+
+  // Consult a doctor before use
+  script.
+    const data = !{JSON.stringify(docs)};
+    const pos = [#{latitude}, #{longitude}];
+
+  // JS by Xtry333
+  script(src="/javascripts/p5.min.js")
+  script(src="/javascripts/functions.js")
+  script(src="/javascripts/script.js")
