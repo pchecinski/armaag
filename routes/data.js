@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/:latitude/:longitude/:date', function(req, res, next) {
-  const latitude = req.params.latitude ? parseFloat(req.params.latitude) : null;
-  const longitude = req.params.longitude ? parseFloat(req.params.longitude) : null;
+router.get('/:date', function(req, res, next) {
+  const latitude = 54.315;
+  const longitude = 18.45;
   const date = decodeURI(req.params.date);
 
-  const hostname = process.env.hostname; 'mongo.checinski.dev';
+  // creditientials from .env file
+  const hostname = process.env.hostname;
   const username = process.env.username;
   const password = process.env.password;
   const database = process.env.database;
@@ -23,6 +24,8 @@ router.get('/:latitude/:longitude/:date', function(req, res, next) {
     const collection = db.collection('armaag_data');
     collection.findOne({"time": date}, {"projection": {"_id": 0, "time": 0}}, function(err, docs) {
       assert.equal(err, null);
+
+      // passing data to front-end application
       res.render('canvas', { latitude, longitude, date, docs });
     });
   });

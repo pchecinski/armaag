@@ -94,7 +94,7 @@ for (let y = -maxProbingDist; y < maxProbingDist; y += size) {
 
         colorMode(HSB)
         strokeWeight(size)
-        stroke(180 - 180 / 8 * pm, 200, 150)
+        stroke(180 - 180 / 32 * pm, 200, 150)
         point(p)
         colorMode(RGB)
     }
